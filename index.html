@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Museo Virtual TV4</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene
+      background="color: #87ceeb"
+      renderer="antialias: true; colorManagement: true"
+      
+    >
+      <!--ASSETS DEL PROYECTO-->
+      <a-assets>
+        <img
+          id="entrar"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fentrar.jpg?v=1601924274500"
+        />
+
+        <img
+          id="salir"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fsalir.jpg?v=1601924274806"
+        />
+
+        <img
+          id="mosaico"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fbienvenidos_Mesa%20de%20trabajo%201_Mesa%20de%20trabajo%201.png?v=1602021528095"
+        />
+
+        <img
+          id="sound"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fsound.png?v=1600882874284"
+        />
+        
+        <img
+          id="chispa1"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fchispa1.png?v=1601937663639"
+        />
+        
+        <img
+          id="chispa2"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fchispa2.png?v=1601937663748"
+        />
+
+        <a-asset
+          id="circle"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Floading.png?v=1600454931990"
+        ></a-asset>
+
+        <a-asset-item
+          id="casa"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fcasa_n3.gltf?v=1601925604660"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="puerta"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fpuerta2.gltf?v=1601915059953"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="letreros"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fletreros2.gltf?v=1601924610670"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="arboles"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2FarbolesC2.gltf?v=1602011095724"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="chavez"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2FchavezC2.7.gltf?v=1602012088200"
+        ></a-asset-item>
+        
+        <a-asset-item
+          id="jazza"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2FJazzmoartC2.2.gltf?v=1602011119858"
+        ></a-asset-item>
+
+        <audio
+          id="birds"
+          src="https://cdn.glitch.com/1731987c-df15-41f3-8b69-ec3e2ee2f503%2Fbirds-in-park2.mp3?v=1602018662893"
+          preload="auto"
+        ></audio>
+      </a-assets>
+      <!--ASSETS DEL PROYECTO-->
+      <a-entity light="type: ambient; color: #BBB"></a-entity>
+     <a-entity light="type: directional; color: #FFF; intensity: 0.3" position="-0.5 1 1"></a-entity>
+      
+      <a-entity
+        sound="src:#birds; autoplay:true; volume:10; loop:true"
+      ></a-entity>
+
+      <a-plane
+        src="#mosaico"
+        position="0 1.9 -2.984"
+        rotation="0 0 0"
+        width="3"
+        height="1.7"
+      ></a-plane>
+      
+      <!--CAMARA-->
+
+      <a-entity
+        id="camera_rig"
+        camera
+        position="0 1.6 0"
+        look-controls="pointerLockEnabled: true"
+      >
+        <a-entity
+          geometry="primitive:ring; radiusInner: 0.015; radiusOuter: 0.02"
+          cursor="fuse:true; fuseTimeout:3000"
+          material="color:#aed7f5; shader:flat"
+          position="0 0 -1"
+        >
+          <a-ring
+            id="loader2"
+            scale="0.1 0.1 0.1"
+            rotation="0 0 0"
+            radius-inner="0.1"
+            radius-outer="1"
+            material=" transparent:true; shader:flat; opacity:0.7; src:#circle"
+            visible="false"
+            animation="property: rotation; to: 0 0 360; dur: 1000; dir:reverse; loop: true"
+          ></a-ring>
+        </a-entity>
+      </a-entity>
+      <!--CAMARA-->
+
+      <!--MODELO DEL PATIO-->
+      <a-entity
+        id="casa_model"
+        gltf-model="#casa"
+        position="0 0 0"
+        scale="1 1 1"
+        rotation="0 180 0"
+      ></a-entity>
+      <!--MODELO DEL PATIO-->
+
+      <!--MODELO DE LETREROS-->
+      <a-entity
+        id="letreros_model"
+        gltf-model="#letreros"
+        position="0 0 0"
+        scale="1 1 1"
+        rotation="0 180 0"
+      ></a-entity>
+      <!--MODELO DE LETREROS->
+      
+
+      <!--MODELO DE CHAVEZ MORADO-->
+      <a-entity
+        id="chavez_model"
+        gltf-model="#chavez"
+        position="-16 0 0"
+        scale="0 0 0"
+        rotation="0 88 0"
+        shadow="receive:true"
+      ></a-entity>
+      <!--MODELO DE CHAVEZ MORADO--> 
+      
+      <!--MODELO DE PUERTA CHAVEZ MORADO-->
+      <a-entity
+        id="chavez_puerta"
+        gltf-model="#puerta"
+        position="7.1 0.1 0.75"
+        scale="0 0 0"
+        rotation="0 -2.8 0"
+      ></a-entity>
+      <!--MODELO DE PUERTA CHAVEZ MORADO-->
+
+      <!--MODELO DE OLGA COSTA-->
+      <a-entity
+        id="arboles_model"
+        gltf-model="#arboles"
+        position="0 0 6"
+        scale="0 0 0"
+        rotation="0 180 0"
+      ></a-entity>
+      <!--MODELO DE OLGA COSTA-->
+      
+      <!--MODELO DE PUERTA OLGA COSTA-->
+      <a-entity
+        id="olga_puerta"
+        gltf-model="#puerta"
+        position="0 0 -5.8"
+        scale="0 0 0"
+        rotation="0 90 0"
+      ></a-entity>
+      <!--MODELO DE PUERTA OLGA COSTA-->
+      
+      <!--MODELO DE JAZZAMOART-->
+      <a-entity
+        id="jazza_model"
+        gltf-model="#jazza"
+        position="5.9 1.6 -0.5"
+        scale="0 0 0"
+        rotation="0 -90 0"
+      ></a-entity>
+      <!--MODELO DE JAZZAMOART-->
+      
+      <!--MODELO DE PUERTA JAZZAMOART-->
+      <a-entity
+        id="jazza_puerta"
+        gltf-model="#puerta"
+        position="3.2 0.180 0"
+        scale="0 0 0"
+        rotation="0 0 0"
+      ></a-entity>
+      <!--MODELO DE PUERTA JAZZAMOART-->
+
+      <!--PUERTA OLGA COSTA: ENTRADA-->
+      <a-box
+        id="Olga_Patio"
+        src="#entrar"
+        position="0 1.07 3"
+        rotation="0 180 0"
+        scale="0.8 0.45 0.1"
+        event-set__down="_event: click; _target: #casa_model; scale:0 0 0"
+        event-set__down2="_event: click; _target: #arboles_model; scale: 0.8 0.8 0.8"
+        event-set__down3="_event: click;  scale:0 0 0"
+        event-set__down4="_event: click; _target:#Jazza_Patio; scale:0 0 0"
+        event-set__down5="_event: click; _target:#Chavez_Patio; scale:0 0 0"
+        event-set__down6="_event: click; _target:#Patio_Olga; scale:0.8 0.45 1"
+        event-set__down7="_event: click; _target: #letreros_model; visible: false"
+        event-set__down8="_event: click; _target: #olga_puerta; scale:1 1 1"
+        event-set__enter2="_event: mouseenter; _target:#loader2; visible:true"
+        event-set__leave2="_event: mouseleave; _target:#loader2; visible:false"
+        visible="true"
+      ></a-box>
+      <!--PUERTA OLGA COSTA: ENTRADA-->
+
+      <!--PUERTA OLGA COSTA: SALIDA-->
+      <a-box
+        id="Patio_Olga"
+        src="#salir"
+        position="0 1.4 -1.8"
+        rotation="0 180 0"
+        scale="0 0 0"
+        event-set__down="_event: click; _target: #casa_model; scale:1 1 1"
+        event-set__down2="_event: click; _target: #arboles_model; scale:0 0 0"
+        event-set__down3="_event: click; _target: #Olga_Patio; scale: 0.8 0.45 0.1"
+        event-set__down4="_event: click; scale: 0 0 0"
+        event-set__down5="_event: click; _target: #letreros_model; visible: true"
+        event-set__down6="_event: click; _target: #Chavez_Patio; scale: 0.8 0.45 0.1"
+        event-set__down7="_event: click; _target: #Jazza_Patio; scale: 0.8 0.45 0.1"
+        event-set__down8="_event: click; _target: #olga_puerta; scale:0 0 0"
+        event-set__enter2="_event: mouseenter; _target:#loader2; visible:true"
+        event-set__leave2="_event: mouseleave; _target:#loader2; visible:false"
+        visible="true"
+      ></a-box>
+
+      <!--PUERTA OLGA COSTA: SALIDA-->
+
+      <!--PUERTA CHAVEZ: ENTRADA-->
+      <a-box
+        id="Chavez_Patio"
+        src="#entrar"
+        position="-3 1.07 0"
+        rotation="0 90 0"
+        scale="0.8 0.45 0.1"
+        event-set__down="_event: click; _target: #casa_model; scale:0 0 0"
+        event-set__down2="_event: click; _target: #chavez_model; scale:1 1 1"
+        event-set__down3="_event: click;  scale:0 0 0"
+        event-set__down4="_event: click; _target:#Olga_Patio; scale:0 0 0"
+        event-set__down5="_event: click; _target:#Jazza_Patio; scale:0 0 0"
+        event-set__down6="_event: click; _target:#Patio_Chavez; scale:0.8 0.45 1"
+        event-set__down7="_event: click; _target: #letreros_model; visible: false"
+        event-set__down8="_event: click; _target: #chavez_puerta; scale:1 1 1"
+        event-set__enter2="_event: mouseenter; _target:#loader2; visible:true"
+        event-set__leave2="_event: mouseleave; _target:#loader2; visible:false"
+        visible="true"
+      ></a-box>
+      <!--PUERTA CHAVEZ: ENTRADA-->
+      
+      <!--PUERTA CHAVEZ: SALIDA-->
+      <a-box
+        id="Patio_Chavez"
+        src="#salir"
+        position="2.8 1.5 0.5"
+        rotation="0 88 0"
+        scale="0 0 0"
+        event-set__down="_event: click; _target: #casa_model; scale:1 1 1"
+        event-set__down2="_event: click; _target: #chavez_model; scale:0 0 0"
+        event-set__down3="_event: click; _target: #Olga_Patio; scale: 0.8 0.45 0.1"
+        event-set__down4="_event: click; scale: 0 0 0"
+        event-set__down5="_event: click; _target: #letreros_model; visible: true"
+        event-set__down6="_event: click; _target: #Chavez_Patio; scale: 0.8 0.45 0.1"
+        event-set__down7="_event: click; _target: #Jazza_Patio; scale: 0.8 0.45 0.1"
+        event-set__down8="_event: click; _target: #chavez_puerta; scale:0 0 0"
+        event-set__enter2="_event: mouseenter; _target:#loader2; visible:true"
+        event-set__leave2="_event: mouseleave; _target:#loader2; visible:false"
+        visible="true"   
+      ></a-box>
+      <!--PUERTA CHAVEZ: SALIDA-->
+      
+      <!--PUERTA JAZZAMOART: ENTRADA-->
+      <a-box
+        id="Jazza_Patio"
+        src="#entrar"
+        position="3 1.07 0"
+        rotation="0 90 0"
+        scale="0.8 0.45 0.1"
+        event-set__down="_event: click; _target: #casa_model; scale:0 0 0"
+        event-set__down2="_event: click; _target: #jazza_model; scale:1 1 1"
+        event-set__down3="_event: click;  scale:0 0 0"
+        event-set__down4="_event: click; _target:#Olga_Patio; scale:0 0 0"
+        event-set__down5="_event: click; _target:#Patio_Jazza; scale:0.8 0.45 0.1"
+        event-set__down6="_event: click; _target:#Chavez_Patio; scale:0 0 0"
+        event-set__down7="_event: click; _target: #letreros_model; visible: false"
+        event-set__down8="_event: click; _target: #jazza_puerta; scale:1 1 1"
+        event-set__down9="_event: click; _target: #c1; scale:4 4 0"
+        event-set__enter2="_event: mouseenter; _target:#loader2; visible:true"
+        event-set__leave2="_event: mouseleave; _target:#loader2; visible:false"
+        visible="true"
+      ></a-box>
+      <!--PUERTA JAZZAMOART: ENTRADA-->
+      
+      <!--PUERTA JAZZAMOART: SALIDA-->
+      <a-box
+        id="Patio_Jazza"
+        src="#salir"
+        position="-1.18 1.6 0"
+        rotation="0 90 0"
+        scale="0 0 0"
+        event-set__down="_event: click; _target: #casa_model; scale:1 1 1"
+        event-set__down2="_event: click; _target: #jazza_model; scale:0 0 0"
+        event-set__down3="_event: click; _target: #Olga_Patio; scale: 0.8 0.45 0.1"
+        event-set__down4="_event: click; scale: 0 0 0"
+        event-set__down5="_event: click; _target: #letreros_model; visible: true"
+        event-set__down6="_event: click; _target: #Chavez_Patio; scale: 0.8 0.45 0.1"
+        event-set__down7="_event: click; _target: #Jazza_Patio; scale: 0.8 0.45 0.1"
+        event-set__down8="_event: click; _target: #jazza_puerta; scale:0 0 0"
+        event-set__down9="_event: click; _target: #c1; scale:0 0 0"
+        event-set__enter2="_event: mouseenter; _target:#loader2; visible:true"
+        event-set__leave2="_event: mouseleave; _target:#loader2; visible:false"
+        visible="true"   
+      ></a-box>
+      <!--PUERTA JAZZAMOART: SALIDA-->
+
+      
+    </a-scene>
+  </body>
+</html>
